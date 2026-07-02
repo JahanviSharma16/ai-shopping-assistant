@@ -1,4 +1,5 @@
 import aiService from "../services/ai.service.js";
+import graphService from "../services/graph.service.js";
 import toolService from "../services/tool.service.js";
 import { successResponse } from "../../utils/apiResponse.js";
 
@@ -46,4 +47,10 @@ export const testTool = async (req, res) => {
   const result = await toolService.executeTool(req.validatedBody);
 
   return successResponse(res, "AI tool executed successfully", result);
+};
+
+export const graphChat = async (req, res) => {
+  const result = await graphService.runGraph(req.validatedBody);
+
+  return successResponse(res, "AI graph response generated successfully", result);
 };

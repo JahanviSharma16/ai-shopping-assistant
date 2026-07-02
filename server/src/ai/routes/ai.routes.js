@@ -1,8 +1,18 @@
 import { Router } from "express";
-import { chat, getTools, streamChat, testTool } from "../controllers/ai.controller.js";
+import {
+  chat,
+  getTools,
+  graphChat,
+  streamChat,
+  testTool,
+} from "../controllers/ai.controller.js";
 import asyncHandler from "../../middleware/asyncHandler.js";
 import validateRequest from "../../middleware/validateRequest.js";
-import { aiChatSchema, aiToolTestSchema } from "../../validators/ai.validator.js";
+import {
+  aiChatSchema,
+  aiGraphChatSchema,
+  aiToolTestSchema,
+} from "../../validators/ai.validator.js";
 
 const router = Router();
 
@@ -14,5 +24,10 @@ router.post(
 );
 router.get("/tools", asyncHandler(getTools));
 router.post("/test-tool", validateRequest(aiToolTestSchema), asyncHandler(testTool));
+router.post(
+  "/graph/chat",
+  validateRequest(aiGraphChatSchema),
+  asyncHandler(graphChat),
+);
 
 export default router;

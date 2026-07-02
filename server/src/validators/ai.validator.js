@@ -9,3 +9,9 @@ export const aiToolTestSchema = z.object({
   name: z.string().trim().min(1, "Tool name is required"),
   input: z.record(z.string(), z.unknown()).default({}),
 });
+
+export const aiGraphChatSchema = z.object({
+  message: z.string().trim().min(1, "Message is required"),
+  userId: z.string().trim().min(1).optional(),
+  conversationId: z.string().trim().min(1).optional(),
+});
