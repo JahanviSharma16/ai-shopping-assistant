@@ -1,4 +1,10 @@
-const REQUIRED_ENV_VARS = ["PORT", "MONGODB_URI", "GROQ_API_KEY"];
+const REQUIRED_ENV_VARS = [
+  "PORT",
+  "MONGODB_URI",
+  "GROQ_API_KEY",
+  "JWT_ACCESS_SECRET",
+  "JWT_REFRESH_SECRET",
+];
 
 export const validateEnvironment = (env) => {
   const missingVariables = REQUIRED_ENV_VARS.filter(
