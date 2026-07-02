@@ -1,4 +1,5 @@
 import aiService from "../services/ai.service.js";
+import toolService from "../services/tool.service.js";
 import { successResponse } from "../../utils/apiResponse.js";
 
 export const chat = async (req, res) => {
@@ -33,4 +34,16 @@ export const streamChat = async (req, res) => {
     })}\n\n`,
   );
   res.end();
+};
+
+export const getTools = async (req, res) => {
+  const tools = toolService.getAllTools();
+
+  return successResponse(res, "AI tools fetched successfully", tools);
+};
+
+export const testTool = async (req, res) => {
+  const result = await toolService.executeTool(req.validatedBody);
+
+  return successResponse(res, "AI tool executed successfully", result);
 };
