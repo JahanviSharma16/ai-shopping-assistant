@@ -4,6 +4,7 @@ const REQUIRED_ENV_VARS = [
   "GROQ_API_KEY",
   "JWT_ACCESS_SECRET",
   "JWT_REFRESH_SECRET",
+  "MODEL_NAME",
 ];
 
 export const validateEnvironment = (env) => {
